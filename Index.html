@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Software for Linux</title>
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a2e;
+            color: #e5e5e5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #f5f5f5;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .instructions {
+            text-align: center;
+            color: #aaaaaa;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .software-card {
+            background: linear-gradient(145deg, #2b2b44, #1c1c31);
+            border-radius: 10px;
+            box-shadow: 8px 8px 15px #0f0f1c, -8px -8px 15px #282847;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .software-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .software-card:hover::before {
+            opacity: 1;
+        }
+
+        .software-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 15px #0a0a14, -8px -8px 15px #2f2f50;
+        }
+
+        .software-card img {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .software-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .software-card h2 {
+            font-size: 1.3em;
+            color: #ffffff;
+            margin: 15px 0;
+        }
+
+        .software-card p {
+            font-size: 1em;
+            color: #bbbbbb;
+        }
+
+        /* Custom Alert Styles */
+        .custom-alert {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-alert span {
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Essential Software for Linux</h1>
+        <p class="instructions">Click on a software card to copy the installation command to your clipboard.</p>
+        <div class="software-grid">
+            <!-- Web Browsers -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install chromium')">
+                <img src="https://img.icons8.com/color/96/000000/chrome.png" alt="Google Chrome">
+                <h2>Google Chrome</h2>
+                <p>A fast, secure, and free web browser built for the modern web.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install firefox')">
+                <img src="https://img.icons8.com/color/96/000000/firefox.png" alt="Firefox">
+                <h2>Firefox</h2>
+                <p>A free and open-source web browser known for its speed and privacy.</p>
+            </div>
+
+            <!-- Media Players -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install vlc')">
+                <img src="https://img.icons8.com/color/96/000000/vlc.png" alt="VLC">
+                <h2>VLC Media Player</h2>
+                <p>A free and open-source, portable, cross-platform media player software.</p>
+            </div>
+
+            <!-- Office Suite -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install libreoffice')">
+                <img src="https://img.icons8.com/color/96/000000/office.png" alt="LibreOffice">
+                <h2>LibreOffice</h2>
+                <p>A powerful office suite that's free and open-source.</p>
+            </div>
+
+            <!-- Communication Tools -->
+            <div class="software-card"
+                onclick="copyCommand('wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.33.90-amd64.deb && sudo dpkg -i slack-desktop-4.33.90-amd64.deb && sudo apt-get install -f')">
+                <img src="https://img.icons8.com/color/96/000000/slack-new.png" alt="Slack">
+                <h2>Slack</h2>
+                <p>A collaboration hub that connects your work with the people you work with.</p>
+            </div>
+            <div class="software-card"
+                onclick="copyCommand('wget https://zoom.us/client/latest/zoom_amd64.deb && sudo dpkg -i zoom_amd64.deb && sudo apt-get install -f')">
+                <img src="https://img.icons8.com/color/96/000000/zoom.png" alt="Zoom">
+                <h2>Zoom</h2>
+                <p>A leader in modern enterprise video communications.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install telegram-desktop')">
+                <img src="https://img.icons8.com/color/96/000000/telegram-app.png" alt="Telegram">
+                <h2>Telegram</h2>
+                <p>A cloud-based messaging app with a focus on speed and security.</p>
+            </div>
+
+            <!-- Text Editors -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install code')">
+                <img src="https://img.icons8.com/color/96/000000/visual-studio-code-2019.png" alt="VS Code">
+                <h2>Visual Studio Code</h2>
+                <p>A lightweight but powerful source code editor.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt install sublime-text')">
+                <img src="https://img.icons8.com/color/96/000000/sublime-text.png" alt="Sublime Text">
+                <h2>Sublime Text</h2>
+                <p>A sophisticated text editor for code, markup, and prose.</p>
+            </div>
+
+            <!-- File Sharing -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install filezilla')">
+                <img src="https://img.icons8.com/color/96/000000/filezilla.png" alt="FileZilla">
+                <h2>FileZilla</h2>
+                <p>A free software, cross-platform FTP application.</p>
+            </div>
+
+            <!-- Multimedia Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install gimp')">
+                <img src="https://img.icons8.com/color/96/000000/gimp.png" alt="GIMP">
+                <h2>GIMP</h2>
+                <p>A free and open-source raster graphics editor.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install audacity')">
+                <img src="https://img.icons8.com/color/96/000000/audacity.png" alt="Audacity">
+                <h2>Audacity</h2>
+                <p>A free, open-source, cross-platform audio software.</p>
+            </div>
+
+            <!-- Cloud Storage -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install nautilus-dropbox')">
+                <img src="https://img.icons8.com/color/96/000000/dropbox.png" alt="Dropbox">
+                <h2>Dropbox</h2>
+                <p>A cloud-based file storage service.</p>
+            </div>
+
+            <!-- PDF Reader -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install evince')">
+                <img src="https://img.icons8.com/color/96/000000/pdf.png" alt="Evince">
+                <h2>Evince</h2>
+                <p>A document viewer for multiple document formats like PDF, PostScript, and more.</p>
+            </div>
+
+            <!-- Backup Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install timeshift')">
+                <img src="https://img.icons8.com/color/96/000000/restore" alt="Timeshift">
+                <h2>Timeshift</h2>
+                <p>An open-source system restore tool.</p>
+            </div>
+
+            <!-- Development Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install git')">
+                <img src="https://img.icons8.com/color/96/000000/git.png" alt="Git">
+                <h2>Git</h2>
+                <p>A free and open-source distributed version control system.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install docker')">
+                <img src="https://img.icons8.com/color/96/000000/docker.png" alt="Docker">
+                <h2>Docker</h2>
+                <p>An open platform for developing, shipping, and running applications.</p>
+            </div>
+
+            <!-- Password Managers -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install keepassxc')">
+                <img src="https://img.icons8.com/color/96/000000/keepass.png" alt="KeePassXC">
+                <h2>KeePassXC</h2>
+                <p>A cross-platform community-driven port of KeePass.</p>
+            </div>
+            <!-- Virtualization Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install virtualbox')">
+                <img src="https://img.icons8.com/color/96/000000/virtualbox.png" alt="VirtualBox">
+                <h2>VirtualBox</h2>
+                <p>An open-source hosted hypervisor for x86 virtualization.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install vagrant')">
+                <img src="https://img.icons8.com/color/96/000000/vagrant.png" alt="Vagrant">
+                <h2>Vagrant</h2>
+                <p>A tool for building and managing virtual machine environments in a single workflow.</p>
+            </div>
+
+            <!-- Development Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install nodejs')">
+                <img src="https://img.icons8.com/color/96/000000/nodejs.png" alt="Node.js">
+                <h2>Node.js</h2>
+                <p>A JavaScript runtime built on Chrome's V8 JavaScript engine.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install npm')">
+                <img src="https://img.icons8.com/color/96/000000/npm.png" alt="NPM">
+                <h2>NPM</h2>
+                <p>The package manager for JavaScript, included with Node.js.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install postman')">
+                <img src="https://img.icons8.com/color/96/000000/postman-api.png" alt="Postman">
+                <h2>Postman</h2>
+                <p>A collaboration platform for API development.</p>
+            </div>
+
+            <!-- Containerization Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install podman')">
+                <img src="https://img.icons8.com/color/96/000000/container.png" alt="Podman">
+                <h2>Podman</h2>
+                <p>A daemonless container engine for developing, managing, and running OCI containers on your Linux
+                    system.</p>
+            </div>
+
+            <!-- Collaboration Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install microsoft-teams')">
+                <img src="https://img.icons8.com/color/96/000000/microsoft-teams.png" alt="Microsoft Teams">
+                <h2>Microsoft Teams</h2>
+                <p>A communication platform that combines workplace chat, meetings, notes, and attachments.</p>
+            </div>
+
+            <!-- Cloud Storage Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install rclone')">
+                <img src="https://img.icons8.com/color/96/000000/cloud.png" alt="Rclone">
+                <h2>Rclone</h2>
+                <p>A command-line program to manage files on cloud storage.</p>
+            </div>
+
+            <!-- Audio and Video Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install obs-studio')">
+                <img src="https://img.icons8.com/color/96/000000/obs-studio.png" alt="OBS Studio">
+                <h2>OBS Studio</h2>
+                <p>Free and open-source software for video recording and live streaming.</p>
+            </div>
+
+            <!-- Database Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install mysql-server')">
+                <img src="https://img.icons8.com/color/96/000000/mysql-logo.png" alt="MySQL">
+                <h2>MySQL</h2>
+                <p>The world's most popular open-source relational database.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install postgresql')">
+                <img src="https://img.icons8.com/color/96/000000/postgreesql.png" alt="PostgreSQL">
+                <h2>PostgreSQL</h2>
+                <p>A powerful, open-source object-relational database system.</p>
+            </div>
+            <!-- Communication Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install slack-desktop')">
+                <img src="https://img.icons8.com/color/96/000000/slack.png" alt="Slack">
+                <h2>Slack</h2>
+                <p>A messaging app for teams that brings all communication together.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install discord')">
+                <img src="https://img.icons8.com/color/96/000000/discord-logo.png" alt="Discord">
+                <h2>Discord</h2>
+                <p>A voice, video, and text chat platform for communities and friends.</p>
+            </div>
+
+            <!-- File Management Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install filezilla')">
+                <img src="https://img.icons8.com/color/96/000000/filezilla.png" alt="FileZilla">
+                <h2>FileZilla</h2>
+                <p>A free and open-source FTP client for file transfers.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install syncthing')">
+                <img src="https://img.icons8.com/color/96/000000/cloud-sync.png" alt="Syncthing">
+                <h2>Syncthing</h2>
+                <p>A continuous file synchronization program that synchronizes files between two or more computers in
+                    real-time.</p>
+            </div>
+
+            <!-- Text Editors and IDEs -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install sublime-text')">
+                <img src="https://img.icons8.com/color/96/000000/sublime-text.png" alt="Sublime Text">
+                <h2>Sublime Text</h2>
+                <p>A sophisticated text editor for code, markup, and prose.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install atom')">
+                <img src="https://img.icons8.com/color/96/000000/atom-editor.png" alt="Atom">
+                <h2>Atom</h2>
+                <p>A hackable text editor for the 21st century.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install intellij-idea-community')">
+                <img src="https://img.icons8.com/color/96/000000/intellij-idea.png" alt="IntelliJ IDEA">
+                <h2>IntelliJ IDEA</h2>
+                <p>A powerful Java IDE that supports multiple languages.</p>
+            </div>
+
+            <!-- Graphics and Design Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install inkscape')">
+                <img src="https://img.icons8.com/color/96/000000/inkscape.png" alt="Inkscape">
+                <h2>Inkscape</h2>
+                <p>A free and open-source vector graphics editor.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install krita')">
+                <img src="https://img.icons8.com/color/96/000000/krita.png" alt="Krita">
+                <h2>Krita</h2>
+                <p>A professional free and open-source painting program.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install gimp')">
+                <img src="https://img.icons8.com/color/96/000000/gimp.png" alt="GIMP">
+                <h2>GIMP</h2>
+                <p>A free and open-source image editor.</p>
+            </div>
+
+            <!-- Backup and Sync Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install duplicati')">
+                <img src="https://img.icons8.com/color/96/000000/backup.png" alt="Duplicati">
+                <h2>Duplicati</h2>
+                <p>A free backup software to store encrypted, incremental backups on cloud storage services and remote
+                    file servers.</p>
+            </div>
+
+            <!-- Multimedia Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install vlc')">
+                <img src="https://img.icons8.com/color/96/000000/vlc.png" alt="VLC Media Player">
+                <h2>VLC Media Player</h2>
+                <p>A free and open-source cross-platform multimedia player.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install audacity')">
+                <img src="https://img.icons8.com/color/96/000000/audacity.png" alt="Audacity">
+                <h2>Audacity</h2>
+                <p>A free, open-source, cross-platform audio software for multi-track recording and editing.</p>
+            </div>
+
+            <!-- Documentation Tools -->
+            <div class="software-card" onclick="copyCommand('sudo apt-get install libreoffice')">
+                <img src="https://img.icons8.com/color/96/000000/libreoffice.png" alt="LibreOffice">
+                <h2>LibreOffice</h2>
+                <p>A powerful and free office suite, a successor to OpenOffice.</p>
+            </div>
+            <div class="software-card" onclick="copyCommand('sudo apt-get install typora')">
+                <img src="https://img.icons8.com/color/96/000000/typora.png" alt="Typora">
+                <h2>Typora</h2>
+                <p>A minimal Markdown editor, providing seamless experience as both reader and writer.</p>
+            </div>
+
+
+        </div>
+
+        <div class="custom-alert" id="customAlert">
+            <span>Command copied to clipboard!</span>
+        </div>
+    </div>
+
+    <script>
+        function copyCommand(command) {
+            navigator.clipboard.writeText(command).then(() => {
+                showCustomAlert();
+            });
+        }
+
+        function showCustomAlert() {
+            const alertBox = document.getElementById('customAlert');
+            alertBox.style.opacity = 1;
+            setTimeout(() => {
+                alertBox.style.opacity = 0;
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
